@@ -1,0 +1,102 @@
+<?php
+
+/**
+ * @file job_auction.install
+ * @author e-Commerce Dev Team
+ * Install and uninstall all required databases.
+ * Also do incremental database updates.
+ */
+
+/**
+ * e-Commerce auction module schema
+ */
+
+function job_auction_schema() {
+  $schema = array();
+
+  $schema['job_product_auction'] = array(
+    'description' => t('TODO'),
+    'fields' => array(
+      'nid' => array(
+        'description' => t('TODO'),
+        'type' => 'int',
+        'unsigned' => 1,
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+      'expires' => array(
+        'description' => t('TODO'),
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+    ),
+    'primary key' => array('nid'),
+  );
+
+  $schema['job_auction_bid'] = array(
+    'description' => t('TODO'),
+    'fields' => array(
+      'nid' => array(
+        'description' => t('TODO'),
+        'type' => 'int',
+        'unsigned' => 1,
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+      'uid' => array(
+        'description' => t('TODO'),
+        'type' => 'int',
+        'unsigned' => 1,
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+      'bid' => array(
+        'description' => t('TODO'),
+        'type' => 'numeric',
+        'precision' => 10,
+        'scale' => 2,
+        'not null' => TRUE,
+        'default' => 0.00,
+      ),
+      'created' => array(
+        'description' => t('TODO'),
+        'type' => 'int',
+        'unsigned' => 1,
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+    ),
+    'indexes' => array(
+      'nid' => array('nid'),
+    ),
+  );
+
+  return $schema;
+}
+
+/**
+ * E-Commerce auction module schema
+ */
+function job_auction_install() {
+  // Create tables.
+  drupal_install_schema('job_auction');
+  drupal_set_message(t('Job_auction: Auction tables have been created.'));
+}
+
+
+/**
+ * Implementation of hook_uninstall().
+ *
+ * Uninstall all databases and delete variables
+ */
+function job_auction_uninstall() {
+  // Remove tables.
+  drupal_uninstall_schema('job_auction');
+
+   drupal_set_message(t('Job_auction: Auction tables have been deleted.'));
+
+  // Delete variables
+  variable_del('auction_days');
+  variable_del('auction_fixed');
+}

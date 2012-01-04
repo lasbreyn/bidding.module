@@ -1,0 +1,37 @@
+
+.job-auction-bid-table {
+  width: 18em;
+  float: right;
+  clear: right;
+  margin: 0px 0px 1em 1em;
+}
+
+.job-auction-bid-table tr.odd .form-item, .job-auction-bid-table tr.even .form-item {
+  /* Overrides system.css */
+  white-space: normal;
+}
+
+.job-auction-bid-table TH {
+  white-space: nowrap;
+}
+
+.job-auction-bid-table TD {
+  text-align: right;
+}
+
+.job-auction-expiry-hour {
+  color: #c60;
+}
+
+.job-auction-expiry-min, .job-auction-not-high-bidder {
+  font-size: larger;
+  color: red;
+}
+
+.job-auction-not-high-bidder {
+  color: red;
+}
+
+.content form #auction-bid-form {
+	width: 300px;
+}
